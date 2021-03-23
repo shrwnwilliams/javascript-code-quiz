@@ -41,10 +41,10 @@ var questions = [
 ];
 
 questionTitle.textContent = questions[0].question;
-answerButtonOne.textContent = questions[0].options[0];
-answerButtonTwo.textContent = questions[0].options[1];
-answerButtonThree.textContent = questions[0].options[2];
-answerButtonFour.textContent = questions[0].options[3];
+answerButtonOne.textContent = "1. " + questions[0].options[0];
+answerButtonTwo.textContent = "2. " + questions[0].options[1];
+answerButtonThree.textContent = "3. " + questions[0].options[2];
+answerButtonFour.textContent = "4. " + questions[0].options[3];
 
 // function definitions
 
@@ -53,7 +53,11 @@ answerContainer.addEventListener("click", function(event) {
     var optionTarget = event.target;
 
     if (optionTarget.matches("button")) {
-        ;
+        
+        if (questions[0].options.indexOf("alerts") === questions[0].correctAnswer)
+        alert("holy shit, you're right")
+    } else if (!questions[0].options.indexOf("alerts") === questions[0].correctAnswer) {
+        alert("you're wrong")
     }
 })
 
