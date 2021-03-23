@@ -2,7 +2,7 @@
 var questionArea = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var answerArea = document.getElementById("options");
-var timerArea = document.getElementById("timer")
+var timerArea = document.getElementById("timer");
 var answerButtons = document.querySelectorAll(".option");
 var answerButtonOne = document.getElementById("option-one");
 var answerButtonTwo = document.getElementById("option-two");
@@ -10,7 +10,33 @@ var answerButtonThree = document.getElementById("option-three");
 var answerButtonFour = document.getElementById("option-four");
 
 // javascript variables
-
+var questions = [
+  {
+    question: "Commonly used data types DO NOT include:",
+    options: ["alerts", "strings", "booleans", "numbers"],
+    correctAnswer: 0,
+  },
+  {
+    question: "The condition in an if / else statement is enclosed within _____.",
+    options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+    correctAnswer: 2
+  },
+  {
+    question: "Arrays in JavaScript can be used to store _____.",
+    options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    correctAnswer: 3
+  },
+  {
+    question: "String values must be enclosed within _____ when being assigned to variables.",
+    options: ["commas", "curly brackets", "quotes", "parenthesis"],
+    correctAnswer: 2
+  },
+  {
+    question: "A very useful tool used during the development and debugging for printing content to the debugger is:",
+    options: ["JavaScript", "console.log", "terminal / bash", "for loops"],
+    correctAnswer: 1
+  }
+];
 // function definitions
 
 // event listeners
