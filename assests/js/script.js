@@ -10,54 +10,58 @@ var answerButtonOne = document.getElementById("option-one");
 var answerButtonTwo = document.getElementById("option-two");
 var answerButtonThree = document.getElementById("option-three");
 var answerButtonFour = document.getElementById("option-four");
+// var currentQuestion = 0
 
 // javascript variables
 var questions = [
   {
     question: "Commonly used data types DO NOT include:",
     options: ["alerts", "strings", "booleans", "numbers"],
-    correctAnswer: 0,
+    correctAnswer: "alerts",
   },
   {
     question: "The condition in an if / else statement is enclosed within _____.",
     options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
-    correctAnswer: 2
+    correctAnswer: "parenthesis"
   },
   {
     question: "Arrays in JavaScript can be used to store _____.",
     options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    correctAnswer: 3
+    correctAnswer: "all of the above"
   },
   {
     question: "String values must be enclosed within _____ when being assigned to variables.",
     options: ["commas", "curly brackets", "quotes", "parenthesis"],
-    correctAnswer: 2
+    correctAnswer: "quotes"
   },
   {
     question: "A very useful tool used during the development and debugging for printing content to the debugger is:",
     options: ["JavaScript", "console.log", "terminal / bash", "for loops"],
-    correctAnswer: 1
+    correctAnswer: "console.log"
   },
 ];
 
+
+
 questionTitle.textContent = questions[0].question;
-answerButtonOne.textContent = "1. " + questions[0].options[0];
-answerButtonTwo.textContent = "2. " + questions[0].options[1];
-answerButtonThree.textContent = "3. " + questions[0].options[2];
-answerButtonFour.textContent = "4. " + questions[0].options[3];
+answerButtonOne.textContent = questions[0].options[0];
+answerButtonTwo.textContent = questions[0].options[1];
+answerButtonThree.textContent = questions[0].options[2];
+answerButtonFour.textContent = questions[0].options[3];
 
 // function definitions
 
 // event listeners
 answerContainer.addEventListener("click", function(event) {
     var optionTarget = event.target;
+    var userChoice = event.target.textContent;
 
     if (optionTarget.matches("button")) {
-        
-        if (questions[0].options.indexOf("alerts") === questions[0].correctAnswer)
-        alert("holy shit, you're right")
-    } else if (!questions[0].options.indexOf("alerts") === questions[0].correctAnswer) {
-        alert("you're wrong")
+
+        if (userChoice === questions[0].correctAnswer)
+        alert("holy smokes, you're right");
+    } else {
+        alert("you're wrong");
     }
 })
 
