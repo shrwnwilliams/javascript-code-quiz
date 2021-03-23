@@ -17,9 +17,21 @@
       </div>
     </nav>
     <main>
-      <div id="questions">
+      <div id="start-screen">
+        <div>
+          <h1>JavaScript Coding Quiz Challenge</h1>
+          <h3>
+            Try to answer the following code-related questions within the time
+            limit. Keep in mind that incorrect answers will penalize your
+            score/time by 10 seconds.
+          </h3>
+          <button id="start-button">Start</button>
+        </div>
+      </div>
+
+      <div id="questions" class="hide">
         <h2 id="question-title"></h2>
-        <div id="options">
+        <div id="options-container">
           <button class="option" id="option-one"></button>
           <button class="option" id="option-two"></button>
           <button class="option" id="option-three"></button>
