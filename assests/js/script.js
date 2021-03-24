@@ -59,7 +59,7 @@ var index = 0;
 var gameTime = 60;
 
 // function definitions
-function displayQuestion (){
+function displayQuestion() {
   questionTitle.textContent = questions[index].question;
   answerButtonOne.textContent = questions[index].options[0];
   answerButtonTwo.textContent = questions[index].options[1];
@@ -67,7 +67,7 @@ function displayQuestion (){
   answerButtonFour.textContent = questions[index].options[3];
 }
 
-function saveScore (){
+function saveScore() {
   var userInitials = initialsInput.value.trim();
 
   if (userInitials) {
@@ -75,25 +75,24 @@ function saveScore (){
     var newScore = {
       score: gameTime,
       initials: userInitials,
-    }
+    };
     scoreList.push(newScore);
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
   }
   displayScore();
 }
 
-function displayScore (){
+function displayScore() {
   var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
-  for (var i=0; i < scoreList.length; i++){
+  for (var i = 0; i < scoreList.length; i++) {
     var scoreItem = document.createElement("li");
     scoreItem.textContent = scoreList[i].score + " - " + scoreList[i].initials;
     scoreCard.appendChild(scoreItem);
   }
 }
 
-
 function startGameTime() {
-  timer = setInterval(function() {
+  timer = setInterval(function () {
     timerArea.textContent = gameTime;
     gameTime--;
     if (gameTime === 0) {
@@ -103,7 +102,7 @@ function startGameTime() {
   }, 1000);
 }
 
-function endGame (){
+function endGame() {
   questionArea.classList.remove("questions");
   questionArea.classList.add("hide");
   endScreen.classList.remove("hide");
@@ -117,7 +116,6 @@ function endGame (){
 answerContainer.addEventListener("click", function (event) {
   var optionTarget = event.target;
   var userChoice = event.target.textContent;
-  
 
   if (optionTarget.matches("button")) {
     if (userChoice === questions[index].correctAnswer) {
@@ -126,12 +124,11 @@ answerContainer.addEventListener("click", function (event) {
       gameTime = gameTime - 10;
       wrongOrRight.textContent = "Wrong!";
     }
-    if (index < questions.length - 1){
+    if (index < questions.length - 1) {
       index++;
       displayQuestion();
     } else {
       endGame();
-      // end the game and ask the user to input their intiils for the high for the high score. 
     }
   }
 });
