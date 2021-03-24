@@ -69,3 +69,7 @@ button:hover {
     font-weight: bold;
     font-size: 20px;
 }
+
+#final-score {
+    font-weight: normal;
+}

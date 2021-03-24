@@ -4,6 +4,8 @@ var questionTitle = document.getElementById("question-title");
 var answerContainer = document.getElementById("options-container");
 var wrongOrRight = document.getElementById("wrong-or-right");
 var endScreen = document.getElementById("end-screen");
+var finalScore = document.getElementById("final-score");
+var highScoreButton = document.getElementById("highscore-submit")
 var timerArea = document.getElementById("timer");
 var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start-button");
@@ -55,8 +57,6 @@ var index = 0;
 
 var gameTime = 60;
 
-var timer;
-
 
 
 // function definitions
@@ -80,9 +80,11 @@ function startGameTime() {
 }
 
 function endGame (){
-  questionArea.setAttribute("style", "display:none");
+  // questionArea.setAttribute("style", "display:none");
   endScreen.setAttribute("style", "display:flex");
-  alert("game over");
+  clearInterval(timer);
+  finalScore.textContent = gameTime;
+  // alert("game over");
 }
 
 // event listeners
@@ -105,7 +107,7 @@ answerContainer.addEventListener("click", function (event) {
       endGame();
       // end the game and ask the user to input their intiils for the high for the high score. 
       // stop the timer
-      // hide last question
+      // hide last question- DONE
     }
   }
 });
