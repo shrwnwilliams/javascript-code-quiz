@@ -5,7 +5,9 @@ var answerContainer = document.getElementById("options-container");
 var wrongOrRight = document.getElementById("wrong-or-right");
 var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
-var highScoreButton = document.getElementById("highscore-submit")
+var highScoreButton = document.getElementById("highscore-submit");
+var initialsInput = document.getElementById("initials-input");
+var scoreCard = document.getElementById("score-card");
 var timerArea = document.getElementById("timer");
 var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start-button");
@@ -14,7 +16,6 @@ var answerButtonOne = document.getElementById("option-one");
 var answerButtonTwo = document.getElementById("option-two");
 var answerButtonThree = document.getElementById("option-three");
 var answerButtonFour = document.getElementById("option-four");
-// var currentQuestion = 0
 
 // javascript variables
 var questions = [
@@ -57,8 +58,6 @@ var index = 0;
 
 var gameTime = 60;
 
-
-
 // function definitions
 function displayQuestion (){
   questionTitle.textContent = questions[index].question;
@@ -67,6 +66,31 @@ function displayQuestion (){
   answerButtonThree.textContent = questions[index].options[2];
   answerButtonFour.textContent = questions[index].options[3];
 }
+
+function saveScore (){
+  var userInitials = initialsInput.value.trim();
+
+  if (userInitials) {
+    var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
+    var newScore = {
+      score: gameTime,
+      initials: userInitials,
+    }
+    scoreList.push(newScore);
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
+  }
+  displayScore();
+}
+
+function displayScore (){
+  var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
+  for (var i=0; i < scoreList.length; i++){
+    var scoreItem = document.createElement("li");
+    scoreItem.textContent = scoreList[i].initials + " - " + scoreList[i].score;
+    scoreCard.appendChild(scoreItem);
+  }
+}
+
 
 function startGameTime() {
   timer = setInterval(function() {
@@ -80,11 +104,13 @@ function startGameTime() {
 }
 
 function endGame (){
-  // questionArea.setAttribute("style", "display:none");
-  endScreen.setAttribute("style", "display:flex");
-  clearInterval(timer);
+  questionArea.classList.remove("questions");
+  questionArea.classList.add("hide");
+  endScreen.classList.remove("hide");
+  endScreen.classList.add("end-screen");
   finalScore.textContent = gameTime;
-  // alert("game over");
+  timerArea.textContent = "";
+  clearInterval(timer);
 }
 
 // event listeners
@@ -106,18 +132,16 @@ answerContainer.addEventListener("click", function (event) {
     } else {
       endGame();
       // end the game and ask the user to input their intiils for the high for the high score. 
-      // stop the timer
-      // hide last question- DONE
     }
   }
 });
 
-
+highScoreButton.addEventListener("click", saveScore);
 
 startButton.addEventListener("click", function () {
   displayQuestion();
   startGameTime();
-  questionArea.setAttribute("style", "display:initial");
+  questionArea.classList.remove("hide");
+  questionArea.classList.add("questions");
   startScreen.setAttribute("style", "display:none");
-  endScreen.setAttribute("style", "display:none");
 });

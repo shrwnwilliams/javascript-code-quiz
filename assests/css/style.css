@@ -22,14 +22,14 @@ button:hover {
     padding: 0 40px;
 }
 
-#questions {
+.questions {
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
 }
 
-#end-screen {
+.end-screen {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -37,11 +37,11 @@ button:hover {
     align-items: center;
 }
 
-#end-screen input {
+.end-screen input {
     margin-left: 20px;
 }
 
-#end-screen button {
+.end-screen button {
     margin-left: 20px;
 }
 
@@ -56,11 +56,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-
-#questions {
-    display: none;
 }
 
 #wrong-or-right {

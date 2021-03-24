@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JavaScript Code Quiz</title>
     <link rel="stylesheet" href="./assests/css/style.css" />
   </head>
   <body>
     <nav class="top-bar">
-      <div id="scores">
-        <h3>View High Scores</h3>
+      <div>
       </div>
       <div id="timer">
         <h3></h3>
@@ -38,12 +37,14 @@
           <button class="option" id="option-four"></button>
           <p id="wrong-or-right"></p>
         </div>
+      </div>
+
       <div id="end-screen" class="hide">
         <h2>All done!</h2>
         <p>Your final score is </p>
-        <p id="final-score"</p>
-        <p>Enter your initials<input type="text" name="initials"></input><button id="highscore-submit">Submit</button></p>
-      </div>
+        <p id="final-score"></p>
+        <p>Enter your initials<input type="text" name="initials" id="initials-input"></input><button id="highscore-submit">Submit</button></p>
+        <ul id="score-card"></ul>
       </div>
     </main>
     <script src="./assests/js/script.js"></script>
