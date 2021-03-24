@@ -63,6 +63,10 @@ function displayQuestion (){
   answerButtonFour.textContent = questions[index].options[3];
 }
 
+function endGame (){
+  questionArea.setAttribute("style", "display:none");
+}
+
 // event listeners
 answerContainer.addEventListener("click", function (event) {
   var optionTarget = event.target;
@@ -72,14 +76,22 @@ answerContainer.addEventListener("click", function (event) {
   if (optionTarget.matches("button")) {
     if (userChoice === questions[index].correctAnswer) {
       wrongOrRight.textContent = "Correct!";
-      index++;
     } else {
       wrongOrRight.textContent = "Wrong!"
-      index++;
     }
-    displayQuestion();
+    if (index < questions.length - 1){
+      index++;
+      displayQuestion();
+    } else {
+      endGame();
+      // end the game and ask the user to input their intiils for the high for the high score. 
+      // stop the timer
+      // hide last question
+    }
   }
 });
+
+
 
 startButton.addEventListener("click", function () {
   questionArea.setAttribute("style", "display:initial");
