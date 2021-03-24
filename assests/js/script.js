@@ -86,7 +86,7 @@ function displayScore (){
   var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
   for (var i=0; i < scoreList.length; i++){
     var scoreItem = document.createElement("li");
-    scoreItem.textContent = scoreList[i].initials + " - " + scoreList[i].score;
+    scoreItem.textContent = scoreList[i].score + " - " + scoreList[i].initials;
     scoreCard.appendChild(scoreItem);
   }
 }
