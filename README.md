@@ -6,4 +6,4 @@ This is the finalized JavaScript code quiz website. I worked with two study grou
 # Deployed Site
 Here is the link to the deployed site.
 
-[Deployed Site](https://shrwnwilliams.github.io/random-password-generator/)
+[Deployed Site](https://shrwnwilliams.github.io/javascript-code-quiz/.)
