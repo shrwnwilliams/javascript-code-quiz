@@ -29,6 +29,22 @@ button:hover {
     text-align: center;
 }
 
+#end-screen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#end-screen input {
+    margin-left: 20px;
+}
+
+#end-screen button {
+    margin-left: 20px;
+}
+
 #start-screen {
     display: flex;
     flex-direction: column;

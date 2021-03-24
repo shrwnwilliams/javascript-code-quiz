@@ -3,6 +3,7 @@ var questionArea = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var answerContainer = document.getElementById("options-container");
 var wrongOrRight = document.getElementById("wrong-or-right");
+var endScreen = document.getElementById("end-screen");
 var timerArea = document.getElementById("timer");
 var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start-button");
@@ -52,6 +53,10 @@ var questions = [
 
 var index = 0;
 
+var gameTime = 60;
+
+var timer;
+
 
 
 // function definitions
@@ -63,8 +68,21 @@ function displayQuestion (){
   answerButtonFour.textContent = questions[index].options[3];
 }
 
+function startGameTime() {
+  timer = setInterval(function() {
+    timerArea.textContent = gameTime;
+    gameTime--;
+    if (gameTime === 0) {
+      endGame();
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+
 function endGame (){
   questionArea.setAttribute("style", "display:none");
+  endScreen.setAttribute("style", "display:flex");
+  alert("game over");
 }
 
 // event listeners
@@ -77,7 +95,8 @@ answerContainer.addEventListener("click", function (event) {
     if (userChoice === questions[index].correctAnswer) {
       wrongOrRight.textContent = "Correct!";
     } else {
-      wrongOrRight.textContent = "Wrong!"
+      gameTime = gameTime - 10;
+      wrongOrRight.textContent = "Wrong!";
     }
     if (index < questions.length - 1){
       index++;
@@ -94,7 +113,9 @@ answerContainer.addEventListener("click", function (event) {
 
 
 startButton.addEventListener("click", function () {
+  displayQuestion();
+  startGameTime();
   questionArea.setAttribute("style", "display:initial");
   startScreen.setAttribute("style", "display:none");
-  displayQuestion();
+  endScreen.setAttribute("style", "display:none");
 });
