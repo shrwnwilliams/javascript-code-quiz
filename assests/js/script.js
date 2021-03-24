@@ -2,8 +2,9 @@
 var questionArea = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var answerContainer = document.getElementById("options-container");
+var wrongOrRight = document.getElementById("wrong-or-right");
 var timerArea = document.getElementById("timer");
-var startScreen = document.querySelector("start-screen");
+var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start-button");
 var answerButtons = document.querySelectorAll(".option");
 var answerButtonOne = document.getElementById("option-one");
@@ -20,58 +21,68 @@ var questions = [
     correctAnswer: "alerts",
   },
   {
-    question: "The condition in an if / else statement is enclosed within _____.",
+    question:
+      "The condition in an if / else statement is enclosed within _____.",
     options: ["quotes", "curly brackets", "parenthesis", "square brackets"],
-    correctAnswer: "parenthesis"
+    correctAnswer: "parenthesis",
   },
   {
     question: "Arrays in JavaScript can be used to store _____.",
-    options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    correctAnswer: "all of the above"
+    options: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above",
+    ],
+    correctAnswer: "all of the above",
   },
   {
-    question: "String values must be enclosed within _____ when being assigned to variables.",
+    question:
+      "String values must be enclosed within _____ when being assigned to variables.",
     options: ["commas", "curly brackets", "quotes", "parenthesis"],
-    correctAnswer: "quotes"
+    correctAnswer: "quotes",
   },
   {
-    question: "A very useful tool used during the development and debugging for printing content to the debugger is:",
+    question:
+      "A very useful tool used during the development and debugging for printing content to the debugger is:",
     options: ["JavaScript", "console.log", "terminal / bash", "for loops"],
-    correctAnswer: "console.log"
+    correctAnswer: "console.log",
   },
 ];
 
+var index = 0;
 
 
-questionTitle.textContent = questions[0].question;
-answerButtonOne.textContent = questions[0].options[0];
-answerButtonTwo.textContent = questions[0].options[1];
-answerButtonThree.textContent = questions[0].options[2];
-answerButtonFour.textContent = questions[0].options[3];
 
 // function definitions
+function displayQuestion (){
+  questionTitle.textContent = questions[index].question;
+  answerButtonOne.textContent = questions[index].options[0];
+  answerButtonTwo.textContent = questions[index].options[1];
+  answerButtonThree.textContent = questions[index].options[2];
+  answerButtonFour.textContent = questions[index].options[3];
+}
 
 // event listeners
-answerContainer.addEventListener("click", function(event) {
-    var optionTarget = event.target;
-    var userChoice = event.target.textContent;
+answerContainer.addEventListener("click", function (event) {
+  var optionTarget = event.target;
+  var userChoice = event.target.textContent;
+  
 
-    if (optionTarget.matches("button")) {
-
-        if (userChoice === questions[0].correctAnswer)
-        alert("holy smokes, you're right");
+  if (optionTarget.matches("button")) {
+    if (userChoice === questions[index].correctAnswer) {
+      wrongOrRight.textContent = "Correct!";
+      index++;
     } else {
-        alert("you're wrong");
+      wrongOrRight.textContent = "Wrong!"
+      index++;
     }
-})
+    displayQuestion();
+  }
+});
 
-startButton.addEventListener("click", function() {
-    questionArea.setAttribute("style", "display:initial");
-})
-// functions calls
-
-// answerButtonOne.addEventListener("click", function() {
-//     count++;
-//     setCounterText();
-//   }
-// );
+startButton.addEventListener("click", function () {
+  questionArea.setAttribute("style", "display:initial");
+  startScreen.setAttribute("style", "display:none");
+  displayQuestion();
+});
